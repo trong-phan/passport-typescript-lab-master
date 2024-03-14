@@ -3,9 +3,6 @@ import expressLayouts from 'express-ejs-layouts';
 import session from 'express-session';
 import path from 'path';
 import passportMiddleware from './middleware/passportMiddleware';
-import { config } from 'dotenv';
-
-config();
 
 const port = process.env.port || 8000;
 
@@ -46,6 +43,7 @@ app.use((req, res, next) => {
 
   console.log(`Session messages are: `);
   console.log((req.session as any).messages);
+
   next();
 });
 

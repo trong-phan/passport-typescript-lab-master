@@ -47,6 +47,9 @@ const userModel = {
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
+  add: (user: Express.User) => {
+    database.push(user);
+  },
 };
 
 export { database, userModel };

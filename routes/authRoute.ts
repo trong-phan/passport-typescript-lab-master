@@ -28,14 +28,18 @@ router.get('/logout', (req, res) => {
 router.get(
   '/github',
   passport.authenticate('github', { scope: ['user:email'] }),
-  function (req, res) {}
+  function (req, res) {
+    // The request will be redirected to GitHub for authentication, so this
+    // function will not be called.
+  }
 );
 
 router.get(
   '/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function (req, res) {
-    res.redirect('/');
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
   }
 );
 
